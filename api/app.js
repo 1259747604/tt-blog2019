@@ -3,6 +3,11 @@ const app = new Koa();
 const session = require('koa-session');
 const cors = require('@koa/cors');
 const router = require('./routers/router');
+const static = require('koa-static');
+const koaBody = require('koa-body');
+const { join } = require('path');
+const { query } = require('./server/db');
+const encrypt = require('./util/encrypt');
 
 /*cors跨域*/
 app.use(
@@ -10,6 +15,12 @@ app.use(
     credentials: true
   })
 );
+
+app.use(koaBody());
+
+/* 静态资源 */
+app.use(static(join(__dirname, 'static')));
+
 /*配置session*/
 app.keys = ['tt is a good boy'];
 const CONFIG = {
@@ -29,3 +40,16 @@ app.use(router.routes()).use(router.allowedMethods());
 app.listen(3000, () => {
   console.log('http://localhost:3000');
 });
+
+{
+  // 设置初始账号
+  async function account() {
+    let res = await query('select * from user');
+    if (res.length) return;
+    await query('insert into user set ?', {
+      username: 'tt',
+      password: encrypt('111111qqq')
+    });
+  }
+  account();
+}
