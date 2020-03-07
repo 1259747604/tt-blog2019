@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="header">
-      <div>文章</div>
+      <div @click="backHome">文章</div>
       <div>
         <Button @click="showLogin" v-if="!ifLogin">登录</Button>
         <Button @click="inAccount" v-if="ifLogin">个人中心</Button>
@@ -39,6 +39,7 @@ export default {
         username: '',
         pwd: ''
       },
+      userInfo: {},
       ruleValidate: {
         username: {
           required: true,
@@ -62,6 +63,7 @@ export default {
           console.log('checkUser -> res', res);
           if (res.keepStatus) {
             this.ifLogin = true;
+            this.userInfo = res.session;
           }
         });
     },
@@ -78,9 +80,10 @@ export default {
             .then(res => res.data)
             .then(res => {
               if (res.data.length) {
-                this.$Message.info({ content: '登录成功' });
+                this.$Message.success({ content: '登录成功' });
                 this.modal = false;
                 this.ifLogin = true;
+                this.userInfo = res.session;
                 return;
               } else {
                 this.$Message.error({ content: '用户名或密码不正确' });
@@ -90,7 +93,16 @@ export default {
       });
     },
     //进入个人中心
-    inAccount() {},
+    inAccount() {
+      this.$router
+        .push({
+          name: 'backstage',
+          params: { id: this.userInfo.id }
+        })
+        .catch(err => {
+          err;
+        });
+    },
     // 退出
     exit() {
       this.$axios
@@ -99,12 +111,26 @@ export default {
         .then(res => {
           if (res.result) {
             this.ifLogin = false;
+            if (this.$route.name !== 'Home') {
+              this.backHome();
+            }
           }
         });
+    },
+    // 回到主页
+    backHome() {
+      this.$router.push('/').catch(err => err);
     }
   }
 };
 </script>
+<style lang="less">
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+</style>
 
 <style lang="less" scoped>
 #app {

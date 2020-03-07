@@ -39,7 +39,8 @@ exports.keepLogin = async (ctx, next) => {
 
 exports.checkLogin = async ctx => {
   ctx.body = {
-    keepStatus: true
+    keepStatus: true,
+    session: ctx.session
   };
 };
 

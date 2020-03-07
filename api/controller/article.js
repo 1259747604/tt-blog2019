@@ -3,10 +3,15 @@ const { query } = require('../server/db.js');
 /* 文章类型 */
 /* get */
 exports.articletype = async ctx => {
-  let result = await query('select * from articletype');
+  let req = ctx.query;
+  let result = await query(`select * from articletype limit ?,?`, [
+    Number(req.page) * Number(req.limit),
+    Number(req.limit)
+  ]);
+  let total = await query('select count(*) as total from articletype');
   ctx.body = {
     data: result,
-    count: result.length,
+    total: total[0].total,
     result: true
   };
 };
