@@ -21,7 +21,13 @@ const routes = [
       {
         path: 'article',
         name: 'article',
-        component: reslove => require(['../components/Article.vue'], reslove)
+        component: reslove =>
+          require(['../components/ArticleList.vue'], reslove)
+      },
+      {
+        path: 'article1',
+        name: 'article1',
+        component: reslove => require(['../components/Article1.vue'], reslove)
       },
       {
         path: 'articletype',

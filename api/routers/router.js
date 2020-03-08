@@ -33,6 +33,16 @@ router.put('/articletype/:id', articleController.articletypeupdate);
 /* 删 */
 router.delete('/articletype/:id', articleController.articletypedelete);
 
+// 文章
+/* 查 */
+router.get('/article', articleController.article);
+/* 增 */
+router.post('/article', articleController.articleinsert);
+/* 改 */
+router.put('/article/:id', articleController.articleupdate);
+/* 删 */
+router.delete('/article/:id', articleController.articledelete);
+
 // 登录
 router.post('/login', loginController.login);
 // 检测登录状态
