@@ -11,6 +11,9 @@
     <div class="middle">
       <Table :columns="column" :data="dt"></Table>
     </div>
+    <div style="margin-top:15px;">
+      <Page :total="total" :page-size="pageSize" @on-change="changePage" />
+    </div>
     <Modal v-model="ifPageWrite" :footer-hide="true" :fullscreen="true">
       <Article :info="info" :ifEdit="ifEdit" @refresh="refresh" />
     </Modal>
@@ -111,7 +114,10 @@ export default {
       ifPageWrite: false,
       ifPreview: false,
       info: {},
-      ifEdit: false
+      ifEdit: false,
+      total: 0,
+      pageSize: 13,
+      currentPage: 1
     };
   },
   mounted() {
@@ -123,10 +129,15 @@ export default {
     },
     // 获取文章列表数据
     async getDt() {
-      let res = await this.$axios('/article').then(res => res.data);
+      let res = await this.$axios('/article', {
+        params: {
+          limit: this.pageSize,
+          page: this.currentPage - 1
+        }
+      }).then(res => res.data);
       if (res.result) {
-        console.log('getDt -> res', res);
         this.dt = res.data;
+        this.total = res.total;
       }
     },
     clickHandler() {},
@@ -161,6 +172,11 @@ export default {
     // 刷新
     refresh() {
       this.ifPageWrite = false;
+      this.getDt();
+    },
+    // 页数改变
+    changePage(params) {
+      this.currentPage = params;
       this.getDt();
     }
   }

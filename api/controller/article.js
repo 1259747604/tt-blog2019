@@ -50,11 +50,20 @@ exports.articletypedelete = async ctx => {
 /* 文章 */
 /* get */
 exports.article = async ctx => {
-  let res = await query('select * from article order by time desc');
+  let req = ctx.query;
+  let result;
+  if (req.page && req.limit) {
+    result = await query(`select * from article order by time desc limit ?,?`, [
+      Number(req.page) * Number(req.limit),
+      Number(req.limit)
+    ]);
+  } else {
+    result = await query('select * from article order by time desc');
+  }
   let total = await query('select count(*) as total from article');
   ctx.body = {
     result: true,
-    data: res,
+    data: result,
     total: total[0].total
   };
 };
