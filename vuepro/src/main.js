@@ -3,14 +3,16 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import axios from 'axios';
-import ViewUI from 'view-design';
-import 'view-design/dist/styles/iview.css';
+// import ViewUI from 'view-design';
+// import 'view-design/dist/styles/iview.css';
+import './plugin/iview';
+
 import moment from 'moment';
 
 /* froala配置 */
-import './plugin/froala';
+/* import './plugin/froala';
 import VueFroala from 'vue-froala-wysiwyg';
-Vue.use(VueFroala);
+Vue.use(VueFroala); */
 
 /* vue-quill-editor */
 import VueQuillEditor from 'vue-quill-editor';
@@ -29,7 +31,7 @@ axios.defaults.withCredentials = true;
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$moment = moment;
-Vue.use(ViewUI);
+// Vue.use(ViewUI);
 new Vue({
   router,
   store,

@@ -12,6 +12,9 @@ module.exports = {
         'window.Quill': 'quill'
       }
     ]);
+    // config
+    //   .plugin('webpack-bundle-analyzer')
+    //   .use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin);
   },
   configureWebpack: {
     plugins: [
