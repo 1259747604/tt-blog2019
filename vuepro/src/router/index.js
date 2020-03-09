@@ -2,14 +2,15 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
+// 此处加上tt是为了nginx配置匹配
 const routes = [
   {
-    path: '/',
+    path: '/tt',
     name: 'Home',
     component: reslove => require(['../views/Home.vue'], reslove)
   },
   {
-    path: '/backstage/:id',
+    path: '/tt/backstage/:id',
     name: 'backstage',
     component: reslove => require(['../views/BackStage.vue'], reslove),
     children: [
@@ -40,6 +41,7 @@ const routes = [
 ];
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 });
 

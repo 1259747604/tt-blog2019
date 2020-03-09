@@ -11,20 +11,34 @@
     <div class="container">
       <router-view></router-view>
     </div>
-    <Modal
-        v-model="modal" :footer-hide=true>
-        <div slot="header">用户登录</div>
-        <Form ref="formValidate" :model="formItem" :rules="ruleValidate" :label-width="80">
-          <FormItem label="用户名" prop='username'>
-            <Input v-model="formItem.username" style="width:350px" placeholder="请输入用户名"/>
-          </FormItem>
-          <FormItem label="密码" prop='pwd'>
-            <Input v-model="formItem.pwd" type="password" style="width:350px" password placeholder="密码"/>
-          </FormItem>
-        </Form>
-        <div class="footer">
-          <Button @click="loginUser">登录</Button>
-        </div>
+    <Modal v-model="modal" :footer-hide="true">
+      <div slot="header">用户登录</div>
+      <Form
+        ref="formValidate"
+        :model="formItem"
+        :rules="ruleValidate"
+        :label-width="80"
+      >
+        <FormItem label="用户名" prop="username">
+          <Input
+            v-model="formItem.username"
+            style="width:350px"
+            placeholder="请输入用户名"
+          />
+        </FormItem>
+        <FormItem label="密码" prop="pwd">
+          <Input
+            v-model="formItem.pwd"
+            type="password"
+            style="width:350px"
+            password
+            placeholder="密码"
+          />
+        </FormItem>
+      </Form>
+      <div class="footer">
+        <Button @click="loginUser">登录</Button>
+      </div>
     </Modal>
   </div>
 </template>
@@ -119,7 +133,7 @@ export default {
     },
     // 回到主页
     backHome() {
-      this.$router.push('/').catch(err => err);
+      this.$router.push({ name: 'Home' }).catch(err => err);
     }
   }
 };
