@@ -156,6 +156,7 @@ body {
   width: 100%;
   height: 100%;
   user-select: none;
+  overflow: hidden;
   & > div:nth-child(1) {
     padding: 0 15px;
     height: 60px;

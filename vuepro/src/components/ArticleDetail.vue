@@ -33,6 +33,16 @@ export default {
   }
 };
 </script>
+<style lang="less">
+.detail {
+  .content {
+    & img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+</style>
 
 <style lang="less" scoped>
 .detail {
@@ -57,6 +67,10 @@ export default {
     width: 70%;
     background: #fff;
     font-size: 16px;
+    & img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 }
 </style>
