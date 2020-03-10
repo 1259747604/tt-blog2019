@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <div class="header">
-      <div @click="backHome">文章</div>
+    <div class="header b-b1">
+      <div @click="backHome">
+        <span class="c-y1" style="letter-spacing: 10px;">TT</span>
+        <span style="color:#fff">帮</span>
+      </div>
       <div>
-        <Button @click="showLogin" v-if="!ifLogin">登录</Button>
-        <Button @click="inAccount" v-if="ifLogin">个人中心</Button>
-        <Button @click="exit" v-if="ifLogin">退出</Button>
+        <Button @click="showLogin" v-if="!ifLogin">进入江湖</Button>
+        <Button @click="inAccount" v-if="ifLogin">帮派大厅</Button>
+        <Button @click="exit" v-if="ifLogin">退隐江湖</Button>
       </div>
     </div>
     <div class="container">
       <router-view></router-view>
     </div>
     <Modal v-model="modal" :footer-hide="true">
-      <div slot="header">用户登录</div>
+      <div slot="header" class="c-y1">用户登录</div>
       <Form
         ref="formValidate"
         :model="formItem"
@@ -78,6 +81,8 @@ export default {
           if (res.keepStatus) {
             this.ifLogin = true;
             this.userInfo = res.session;
+          } else {
+            this.$router.push({ name: 'Home' }).catch(err => err);
           }
         });
     },
@@ -139,39 +144,56 @@ export default {
 };
 </script>
 <style lang="less">
+@import './common/style.less';
 html,
 body {
   width: 100%;
   height: 100%;
 }
 </style>
-
 <style lang="less" scoped>
 #app {
   width: 100%;
   height: 100%;
+  user-select: none;
   & > div:nth-child(1) {
     padding: 0 15px;
-    height: 50px;
+    height: 60px;
     display: flex;
-    line-height: 50px;
-    background: #cdebed;
+    line-height: 60px;
+    border-bottom: 1px solid #565454;
     & > div:nth-child(1) {
-      width: 88%;
-      font-size: 20px;
+      width: 83%;
+      padding-left: 15px;
+      font-size: 32px;
+      font-weight: bold;
       cursor: pointer;
     }
     & > div:nth-child(2) {
-      width: 12%;
+      width: 17%;
       display: flex;
       justify-content: space-around;
       align-items: center;
       font-size: 20px;
+      & button {
+        border-radius: 100px;
+        width: 120px;
+        /deep/ span {
+          font-size: 16px;
+          color: #7d7c6c;
+        }
+      }
     }
   }
   & > div:nth-child(2) {
-    height: calc(100% - 50px);
+    height: calc(100% - 60px);
   }
+}
+/deep/ .ivu-modal-header {
+  background: #000;
+}
+/deep/ .ivu-modal {
+  top: 200px;
 }
 .footer {
   display: flex;

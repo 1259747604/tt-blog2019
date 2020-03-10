@@ -36,6 +36,8 @@ router.delete('/articletype/:id', articleController.articletypedelete);
 // 文章
 /* 查 */
 router.get('/article', articleController.article);
+router.get('/article1', articleController.article1);
+router.get('/article1/:id', articleController.articleDetail);
 /* 增 */
 router.post('/article', articleController.articleinsert);
 /* 改 */

@@ -67,6 +67,46 @@ exports.article = async ctx => {
     total: total[0].total
   };
 };
+exports.article1 = async ctx => {
+  let { keyword, sort, dir, typeid } = ctx.query;
+  let result;
+  let total;
+  let str = '';
+  // 是否存在类型id
+  if (Number(typeid) === 0) {
+    str = `where desp like '%${keyword}%' order by ${sort} ${dir}`;
+  } else {
+    str = `where typeid=${typeid} and desp like '%${keyword}%' order by ${sort} ${dir}`;
+  }
+  total = await query(`select count(*) as total from article ${str}`);
+  // 是否有分页
+  if (ctx.query.page && ctx.query.limit) {
+    str += ` limit ${Number(ctx.query.page) * Number(ctx.query.limit)},${Number(
+      ctx.query.limit
+    )}`;
+  }
+
+  result = await query(
+    `select id, type, typeid,browse,time,desp from article ${str}`
+  );
+
+  ctx.body = {
+    result: true,
+    data: result,
+    total: total[0].total
+  };
+};
+exports.articleDetail = async ctx => {
+  let id = ctx.params.id;
+  console.log('id', id);
+  let result = await query('select desp, content from article where id=?', [
+    id
+  ]);
+  ctx.body = {
+    result: true,
+    data: result
+  };
+};
 /* post*/
 exports.articleinsert = async ctx => {
   let req = ctx.request.body;

@@ -25,13 +25,15 @@ Quill.register('modules/resizeImage ', resizeImage);
 Vue.use(VueQuillEditor);
 
 Vue.config.productionTip = false;
-// axios.defaults.baseURL = 'http://127.0.0.1:3000';
-axios.defaults.baseURL = 'http://49.235.150.225:3003';
+axios.defaults.baseURL = 'http://127.0.0.1:3000';
+// axios.defaults.baseURL = 'http://49.235.150.225:3003';
 axios.defaults.withCredentials = true;
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$moment = moment;
-// Vue.use(ViewUI);
+
+// import VueHighlightJS from 'vue-highlightjs';
+import 'highlight.js/styles/atelier-cave-light.css';
 new Vue({
   router,
   store,

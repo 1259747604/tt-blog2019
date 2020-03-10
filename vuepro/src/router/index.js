@@ -10,6 +10,11 @@ const routes = [
     component: reslove => require(['../views/Home.vue'], reslove)
   },
   {
+    path: '/tt/detail/:id',
+    name: 'articledetail',
+    component: reslove => require(['../components/ArticleDetail.vue'], reslove)
+  },
+  {
     path: '/tt/backstage/:id',
     name: 'backstage',
     component: reslove => require(['../views/BackStage.vue'], reslove),
