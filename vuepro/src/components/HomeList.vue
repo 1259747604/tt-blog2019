@@ -101,11 +101,12 @@ export default {
     },
     // 打开详情
     openDetail(id) {
-      let routeUrl = this.$router.resolve({
-        name: 'articledetail',
-        params: { id }
-      });
-      window.open(routeUrl.href, '_blank');
+      // let routeUrl = this.$router.resolve({
+      //   name: 'articledetail',
+      //   params: { id }
+      // });
+      // window.open(routeUrl.href, '_blank');
+      this.$router.push({ name: 'articledetail', params: { id } });
     }
   }
 };
