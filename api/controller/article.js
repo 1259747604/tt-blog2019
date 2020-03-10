@@ -102,6 +102,7 @@ exports.articleDetail = async ctx => {
   let result = await query('select desp, content from article where id=?', [
     id
   ]);
+  await query('update article set browse = browse+1 where id = ?', [id]);
   ctx.body = {
     result: true,
     data: result
