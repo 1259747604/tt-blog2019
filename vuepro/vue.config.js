@@ -9,7 +9,8 @@ module.exports = {
   chainWebpack: config => {
     config.plugin('provide').use(webpack.ProvidePlugin, [
       {
-        'window.Quill': 'quill'
+        'window.Quill': 'quill',
+        Quill: 'quill/dist/quill.js'
       }
     ]);
     // config

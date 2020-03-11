@@ -2,6 +2,7 @@ const Router = require('@koa/router');
 const router = new Router();
 const articleController = require('../controller/article');
 const loginController = require('../controller/login');
+const upLoadUtil = require('../util/upload');
 
 // 测试
 // const { query } = require('../server/db.js');
@@ -55,4 +56,7 @@ router.get(
 );
 // 登出
 router.post('/exit', loginController.exit);
+
+// 图片上传
+router.post('/uploadImg', upLoadUtil.imgUpload, articleController.imgUpload);
 module.exports = router;

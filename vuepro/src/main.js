@@ -25,8 +25,8 @@ Quill.register('modules/resizeImage ', resizeImage);
 Vue.use(VueQuillEditor);
 
 Vue.config.productionTip = false;
-// axios.defaults.baseURL = 'http://127.0.0.1:3000';
-axios.defaults.baseURL = 'http://49.235.150.225:3003';
+axios.defaults.baseURL = 'http://127.0.0.1:3000';
+// axios.defaults.baseURL = 'http://49.235.150.225:3003';
 axios.defaults.withCredentials = true;
 
 Vue.prototype.$axios = axios;
@@ -39,3 +39,5 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount('#app');
+
+export let url = axios.defaults.baseURL;

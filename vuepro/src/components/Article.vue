@@ -39,6 +39,8 @@
 
 <script>
 import quillConfig from '../plugin/quill';
+import { url } from '../main';
+import { quillRedefine } from 'vue-quill-editor-upload';
 export default {
   props: ['info', 'ifEdit'],
   watch: {
@@ -58,12 +60,26 @@ export default {
   data() {
     return {
       content: ``,
-      editorOption: quillConfig,
+      editorOption: {},
       desp: '',
       typeId: '',
       typeName: '',
-      typeList: []
+      typeList: [],
+      url
     };
+  },
+  created() {
+    this.editorOption = quillRedefine({
+      uploadConfig: {
+        action: `${this.url}/uploadImg`,
+        res: respnse => {
+          return respnse.data;
+        }
+      },
+      toolOptions: quillConfig.modules.toolbar
+    });
+    this.editorOption.modules.imageResize = quillConfig.modules.imageResize;
+    this.editorOption.modules.syntax = quillConfig.modules.syntax;
   },
   mounted() {
     this.init();

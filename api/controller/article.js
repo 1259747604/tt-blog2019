@@ -98,7 +98,6 @@ exports.article1 = async ctx => {
 };
 exports.articleDetail = async ctx => {
   let id = ctx.params.id;
-  console.log('id', id);
   let result = await query('select desp, content from article where id=?', [
     id
   ]);
@@ -147,5 +146,14 @@ exports.articledelete = async ctx => {
   await query('delete from article where id = ?', [id]);
   ctx.body = {
     result: true
+  };
+};
+
+// 图片上传接口
+exports.imgUpload = async ctx => {
+  const file = ctx.request.files;
+  ctx.body = {
+    result: true,
+    data: `http://${ctx.request.host}/artImg/${file.img.name}`
   };
 };
