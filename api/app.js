@@ -37,8 +37,8 @@ app.use(session(CONFIG, app));
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3000, () => {
-  console.log('http://localhost:3000');
+app.listen(3003, () => {
+  console.log('http://localhost:3003');
 });
 
 {

@@ -76,6 +76,7 @@ export default {
           return respnse.data;
         }
       },
+      ...quillConfig,
       toolOptions: quillConfig.modules.toolbar
     });
     this.editorOption.modules.imageResize = quillConfig.modules.imageResize;

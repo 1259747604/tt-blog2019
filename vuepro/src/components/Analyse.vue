@@ -1,10 +1,9 @@
 <template>
-  <div>分析台</div>
+  <div>再联系</div>
 </template>
 
 <script>
 export default {};
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
