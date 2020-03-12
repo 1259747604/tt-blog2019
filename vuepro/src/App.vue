@@ -155,7 +155,6 @@ body {
 #app {
   width: 100%;
   height: 100%;
-  user-select: none;
   overflow: hidden;
   & > div:nth-child(1) {
     padding: 0 15px;
@@ -163,6 +162,7 @@ body {
     display: flex;
     line-height: 60px;
     border-bottom: 1px solid #565454;
+    user-select: none;
     & > div:nth-child(1) {
       width: 83%;
       padding-left: 15px;
