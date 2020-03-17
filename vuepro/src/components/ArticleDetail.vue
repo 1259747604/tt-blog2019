@@ -46,14 +46,17 @@ export default {
 }
 </style>
 <style>
-.ql-snow .ql-editor pre.ql-syntax {
+.detail .ql-snow .ql-editor {
+  line-height: 2;
+}
+.detail .ql-snow .ql-editor pre.ql-syntax {
   background: #2d343c;
   width: 70%;
   overflow: auto;
   border-radius: 5px;
   color: #abb5c2;
 }
-.ql-snow .ql-editor pre {
+.detail .ql-snow .ql-editor pre {
   white-space: pre;
 }
 </style>
@@ -85,7 +88,7 @@ export default {
       overflow: initial;
     }
     .ql-editor pre.ql-syntax {
-      width: 70%;
+      width: 80%;
       overflow: auto;
       border-radius: 5px;
     }
