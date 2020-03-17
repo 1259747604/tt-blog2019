@@ -174,7 +174,7 @@ export default {
 </script>
 
 <style>
-.ql-editor {
+.writeArticle .ql-editor {
   height: 600px;
 }
 </style>
