@@ -33,7 +33,8 @@ Vue.prototype.$axios = axios;
 Vue.prototype.$moment = moment;
 
 // import VueHighlightJS from 'vue-highlightjs';
-import 'highlight.js/styles/atelier-cave-light.css';
+// import 'highlight.js/styles/atelier-cave-light.css';
+import 'highlight.js/styles/hybrid.css';
 new Vue({
   router,
   store,
