@@ -51,7 +51,7 @@ export default {
 }
 .detail .ql-snow .ql-editor pre.ql-syntax {
   background: #2d343c;
-  width: 70%;
+  width: 80%;
   overflow: auto;
   border-radius: 5px;
   color: #abb5c2;
