@@ -3,7 +3,9 @@
     <div class="middle">
       <div class="title">{{ title }}</div>
       <div class="content">
-        <p v-html="content"></p>
+        <div class="ql-snow">
+          <p class="ql-editor" v-html="content"></p>
+        </div>
       </div>
     </div>
   </div>
@@ -52,7 +54,7 @@ export default {
   overflow-x: hidden;
   .title {
     margin: auto;
-    width: 70%;
+    width: 60%;
     height: 60px;
     padding-left: 20px;
     display: flex;
@@ -62,11 +64,14 @@ export default {
     color: #fff;
   }
   .content {
-    padding: 20px;
+    padding: 20px 40px 50px;
     margin: 0 auto;
-    width: 70%;
+    width: 60%;
     background: #fff;
     font-size: 16px;
+    .ql-editor {
+      overflow: initial;
+    }
     & img {
       max-width: 100%;
       height: auto;
