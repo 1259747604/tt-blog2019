@@ -45,6 +45,18 @@ export default {
   }
 }
 </style>
+<style>
+.ql-snow .ql-editor pre.ql-syntax {
+  background: #2d343c;
+  width: 70%;
+  overflow: auto;
+  border-radius: 5px;
+  color: #abb5c2;
+}
+.ql-snow .ql-editor pre {
+  white-space: pre;
+}
+</style>
 
 <style lang="less" scoped>
 .detail {
@@ -54,7 +66,7 @@ export default {
   overflow-x: hidden;
   .title {
     margin: auto;
-    width: 60%;
+    width: 50%;
     height: 60px;
     padding-left: 20px;
     display: flex;
@@ -66,11 +78,16 @@ export default {
   .content {
     padding: 20px 40px 50px;
     margin: 0 auto;
-    width: 60%;
+    width: 50%;
     background: #fff;
     font-size: 16px;
     .ql-editor {
       overflow: initial;
+    }
+    .ql-editor pre.ql-syntax {
+      width: 70%;
+      overflow: auto;
+      border-radius: 5px;
     }
     & img {
       max-width: 100%;
